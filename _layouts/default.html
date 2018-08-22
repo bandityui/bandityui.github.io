@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+{% include head.html %}	
+ <body>
+	<div class="container">	  
+		{% include header.html %}	
+		<div class="row">{{ content }}</div>
+		{% include footer.html %}
+	</div> <!-- /container -->
+	{% include googlesearch.html %}
+	{% include analytics.html %}		
+ </body>
+</html>

@@ -1,0 +1,20 @@
+name: Name
+url: url
+author: bandityui
+description: 
+
+exclude: ["*.Rmd"]
+permalink: /blog/:title
+markdown: kramdown
+kramdown:
+  input: GFM
+encoding: utf-8
+highlighter: rouge
+excerpt_separator: "<!--more-->"
+
+gems:
+  - jekyll-sitemap
+ 
+host: 0.0.0.0
+
+github: [metadata]

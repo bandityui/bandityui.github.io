@@ -2,7 +2,7 @@
 
 cp _drafts/dgxvolume.template index.html
 cd dgxvolume_scripts 
-python3 wv.py 
+python3 wv.py > intro.txt
 awk -vORS=, '{ print "\""$1"\"" }' 86400.dat | sed 's/,$/\n/' > date.list
 awk -vORS=, '{ print $4/1e9 }' 86400.dat | sed 's/,$/\n/' > ts.dat
 awk -vORS=, '{ print $5/1e9 }' 86400.dat | sed 's/,$/\n/' > fees.dat

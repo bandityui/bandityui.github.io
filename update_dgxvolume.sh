@@ -27,7 +27,8 @@ sed -i "s/TVRANGE/$TOTALVOLUME/" index.html
 sed -i "s/DVRANGE/$DAILYVOLUME/" index.html
 sed -i "s/WEEKLYDATE/$WEEKLYDATE/" index.html
 sed -i "s/WVRANGE/$WEEKLYVOLUME/" index.html
-#git add .
-#git commit -m "."
-#git push -u origin master
+grep -v 'title:' index.html > dgxvolume.html
+git add .
+git commit -m "."
+git push -u origin master
 

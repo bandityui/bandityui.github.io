@@ -1,2 +1,5 @@
-_site/
-Admin console.pdf
+_site
+.sass-cache
+.jekyll-metadata
+log
+dgxvolume_scripts/__pycache__

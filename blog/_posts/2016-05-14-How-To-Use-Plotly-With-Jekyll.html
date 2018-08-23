@@ -1,62 +1,13 @@
 ---
-title: "How to Use Plotly with Jekyll and Github Pages"
+title: "Test graphs"
 output: html_document
 layout: post
 date: 'May 14, 2016'
 comments: true
 tags: R
 htmlwidgets: true
-description: Using Plotly on a Github hosted blog doesn't have to be hard.  Follow these 4 steps to include amazing interactive charts in your blog post
+description: 
 ---
-
-
-<p> 
-Any data analysis report can be more interesting with interactive charts and tables. Readers enjoy being able to ask questions of the data themselves to confirm your conclusions.  You can add interactivity to your analyses by using Plotly. Plotly is a powerful software tool that enables you to make amazing charts with R. </p>
-<p>
-My first thought after playing around with the library was wondering if I could use it when sharing to my website. My site is hosted on Github and powered by Jekyll. You can see the repo <a href= "http://www.github.com/kuhnrl30/kuhnrl30.github.io">here</a>. I usually knit my blog posts to a markdown file but that doesn't work with Plotly- the charts don't show up in the post. I searched for step-by-step instructions on how to make it work and came up empty handed.  I did find <a href="https://brendanrocks.com/htmlwidgets-knitr-jekyll">this post</a> which pointed me in the right direction but it took a little editing from there. Here is what I learned.
-</p>
-
-<h3>How to Build a Blog Post with Plotly from an .RMD for Your Github Hosted Blog</h3>
-<ol>
-<li>Starting with the post itself, you'll have to write with html tags instead of using markdown. For me, that consisted of using &lt;h3&gt; instead of ### for headers and &lt;ul&gt; and &lt;li&gt; for lists. It's an inconvenience but it shouldn't stop you from writing your post. </li>
-<li> Add this line to your YAML front-matter: <code>htmlwidgets: TRUE</code>. By the end of this post you'll understand why this is neccessary but the short version is you'll use this switch to indicate if your post includes Plotly. Loading the page will probably take longer than a regular page so using this switch means we'll only have the delay when necessary. 
-<li>Edit your _layouts/post.html file to include this code snippet. This checks for the htmlwidgets switch from the previous step and if its found, builds in a link to all of the dependency files. I call them dependency files because they are Javascript libraries that power Plotly charts- your site now depends on these library files. Without them you'll only see a blank space in your blog. </li>
-
-<pre>
-{% raw %}{% if page.htmlwidgets %}
-{% for html_dep in site.static_files %}
-  {% if html_dep.path contains 'htmlwidgets_deps/' %}
-    {% assign start = "&#060;script src=" | append: {{site.baseurl}} %}
-    {{html_dep.path | prepend: start | append: "&#062;&#060;/script>" }}
-    {% endif %}
-  {% endfor %}
-{% endif %}{% endraw %}
-</pre>
-
-<li> Now we have to either build a makefile or edit the file you are already using. We can't use the Knit HTML button from within RStudio because it won't know it needs to link with the dependency files.  We start the makefile by downloading the <a href="https://github.com/brendan-r/brocks">brocks package</a> built by Brendan Rocks. (With many thanks!)  This package will take care of a lot of the back end tasks for us. 
-
-<pre>
-devtools::install_github("brendan-R/brocks")
-library(brocks)
-</pre>
-
-With that package now installed, then the next step is to start on the build file. My build file uses <a href="http://www.ryankuhn.net/scripts/MakeFile">this script</a>, but the key functions are:
-
-<pre>
-filename <- "your-blog-post.Rmd"
-knit(input= filename,
-     output=output,
-     encoding= 'UTF-8')
-htmlwidgets_deps(paste0(Sys.Date(),"-",filename), always = T)
-</pre>
-
-Once you run those lines, you will have a knitted post and a new directory called <code>htmlwidgets_deps</code>.  This new directory holds Javascript libraries  from step 2 & 3. </p>
-<p>
-The function will also create a directory called _includes/htmlwidgets but the snippet we added to your posts.html file makes this other directory unnecessary. I recommend not pushing it to Github.</p> 
-<p>
-To bring it all together, Step 2 is the switch to look for the Javascript libraries. If any are detected Step 3 will create the link between the post and Javascript libraries. Finally in Step 4 the libraries are saved to the root directory.</p>
-
-</ol>
 
 <h3>A Few Demonstrations</h3>
 

@@ -1,7 +1,7 @@
 #!/bin/bash
 
-cp /home/thomas/bandityui.github.io/_drafts/dgxvolume.template /home/thomas/bandityui.github.io/dgxvolume.markdown
-cd /home/thomas/bandityui.github.io/dgxvolume_scripts 
+cp dgxvolume.template dgxvolume.html
+cd dgxvolume_scripts 
 python3 wv.py >> ../dgxvolume.markdown
 gnuplot graph_weekly.gp
 gnuplot graph_daily.gp

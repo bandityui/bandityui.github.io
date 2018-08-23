@@ -2,7 +2,7 @@
 title: "DGX Volume"
 output: html_document
 layout: post
-date: 'August 22, 2018'
+date: 'CURRENTDATE'
 comments: true
 htmlwidgets: true
 description: 
@@ -12,10 +12,23 @@ description:
 
 <!--html_preserve--><div id="htmlwidget-178" style="width:432px;height:288px;" class="plotly html-widget"></div>
 <script type="application/json" data-for="htmlwidget-178">{"x":{"data":[{"type":"scatter","inherit":false,"x":[XRANGE],"y":[YRANGE],"mode":"lines"}],"layout":{"xaxis":{"title":"Date"},"yaxis":{"title":"Total Supply (DGX)"},"hovermode":"closest","margin":{"b":40,"l":60,"t":25,"r":10}},"url":null,"width":null,"height":null,"source":"A","config":{"modeBarButtonsToRemove":["sendDataToCloud"]},"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
-<br>
 
 <h3>Fees collected</h3>
 
 <!--html_preserve--><div id="htmlwidget-179" style="width:432px;height:288px;" class="plotly html-widget"></div>
 <script type="application/json" data-for="htmlwidget-179">{"x":{"data":[{"type":"scatter","inherit":false,"x":[XRANGE],"y":[FEERANGE],"mode":"lines"}],"layout":{"xaxis":{"title":"Date"},"yaxis":{"title":"Fees Collected (DGX)"},"hovermode":"closest","margin":{"b":40,"l":60,"t":25,"r":10}},"url":null,"width":null,"height":null,"source":"A","config":{"modeBarButtonsToRemove":["sendDataToCloud"]},"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
-<br>
+
+<h3>Total Volume</h3>
+
+<!--html_preserve--><div id="htmlwidget-180" style="width:432px;height:288px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-180">{"x":{"data":[{"type":"scatter","inherit":false,"x":[XRANGE],"y":[TVRANGE],"mode":"lines"}],"layout":{"xaxis":{"title":"Date"},"yaxis":{"title":"Total Volume (DGX)"},"hovermode":"closest","margin":{"b":40,"l":60,"t":25,"r":10}},"url":null,"width":null,"height":null,"source":"A","config":{"modeBarButtonsToRemove":["sendDataToCloud"]},"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+
+<h3>Daily Volume</h3>
+
+<!--html_preserve--><div id="htmlwidget-181" style="width:432px;height:288px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-181">{"x":{"data":[{"type":"bar","inherit":false,"x":[XRANGE],"y":[DVRANGE],"mode":"lines"}],"layout":{"xaxis":{"title":"Date"},"yaxis":{"title":"Daily Volume (DGX)"},"hovermode":"closest","margin":{"b":40,"l":60,"t":25,"r":10}},"url":null,"width":null,"height":null,"source":"A","config":{"modeBarButtonsToRemove":["sendDataToCloud"]},"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+
+<h3>Weekly Volume</h3>
+
+<!--html_preserve--><div id="htmlwidget-182" style="width:432px;height:288px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-182">{"x":{"data":[{"type":"bar","inherit":false,"x":[WEEKLYDATE],"y":[WVRANGE],"mode":"lines"}],"layout":{"xaxis":{"title":"Date"},"yaxis":{"title":"Daily Volume (DGX)"},"hovermode":"closest","margin":{"b":40,"l":60,"t":25,"r":10}},"url":null,"width":null,"height":null,"source":"A","config":{"modeBarButtonsToRemove":["sendDataToCloud"]},"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->

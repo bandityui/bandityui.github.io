@@ -62,14 +62,14 @@ def xvolume(x):
         tv += vi                            # accumulate total volume
       if dt > cx*x:                             # if dt > cx multiples of x time periods
         cx = int(dt/x) + 1                      # a of x time periods passed
-        f.write("%s %s %s %s %s %s %s %s %s" % (di,xv,ts,tx,vdigix,vkybert,vkyberf,vkryptono,'\n'))    # write date, volume to file
+        f.write("%s %s %s %s %s %s %s %s %s %s" % (di,xv,ts,tx,tv,vdigix,vkybert,vkyberf,vkryptono,'\n'))    # write date, volume to file
         di = d0 + datetime.timedelta(seconds=dt)                   # datetime of ith tx
         xv = 0                                                     # reset x volume 
         vdigix = 0                                              # reset volume 
         vkybert = 0                                              # reset volume 
         vkyberf = 0                                              # reset volume 
         vkryptono = 0                                              # reset volume 
-    f.write("%s %s %s %s %s %s %s %s %s" % (di,xv,ts,tx,vdigix,vkybert,vkyberf,vkryptono,'\n'))    # write date, volume to file
+    f.write("%s %s %s %s %s %s %s %s %s %s" % (di,xv,ts,tx,tv,vdigix,vkybert,vkyberf,vkryptono,'\n'))    # write date, volume to file
 
   return di,xv,tv,ts,tx
 
@@ -100,4 +100,5 @@ d0 = now - datetime.timedelta(seconds=dt)       # current time minus dt
 di = d0
 
 di,dv,tv,ts,tx = xvolume(day)
+di,wv,tv,ts,tx = xvolume(week)
 

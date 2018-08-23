@@ -1,14 +1,21 @@
 ---
-title: "DGX volume"
+title: "DGX Volume"
 output: html_document
 layout: post
-date: 'DATE'
+date: 'August 22, 2018'
+comments: true
 htmlwidgets: true
 description: 
 ---
 
 <h3>DGX Total Supply</h3>
 
+<!--html_preserve--><div id="htmlwidget-178" style="width:432px;height:288px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-178">{"x":{"data":[{"type":"scatter","inherit":false,"x":[XRANGE],"y":[YRANGE],"mode":"lines"}],"layout":{"xaxis":{"title":"Date"},"yaxis":{"title":"Total Supply (DGX)"},"hovermode":"closest","margin":{"b":40,"l":60,"t":25,"r":10}},"url":null,"width":null,"height":null,"source":"A","config":{"modeBarButtonsToRemove":["sendDataToCloud"]},"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<br>
+
+<h3>Fees collected</h3>
+
 <!--html_preserve--><div id="htmlwidget-179" style="width:432px;height:288px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-179">{"x":{"data":[{"type":"scatter","mode":"lines","inherit":false,"x":[XRANGE],"y":[YRANGE],"mode":"markers"}],"layout":{"xaxis":{"title":"Date"},"yaxis":{"title":"Total Supply (DGX)"},"hovermode":"closest","margin":{"b":40,"l":60,"t":25,"r":10}},"url":null,"width":null,"height":null,"source":"A","config":{"modeBarButtonsToRemove":["sendDataToCloud"]},"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<script type="application/json" data-for="htmlwidget-179">{"x":{"data":[{"type":"scatter","inherit":false,"x":[XRANGE],"y":[FEERANGE],"mode":"lines"}],"layout":{"xaxis":{"title":"Date"},"yaxis":{"title":"Fees Collected (DGX)"},"hovermode":"closest","margin":{"b":40,"l":60,"t":25,"r":10}},"url":null,"width":null,"height":null,"source":"A","config":{"modeBarButtonsToRemove":["sendDataToCloud"]},"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 <br>

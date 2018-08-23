@@ -2,7 +2,7 @@ import urllib.request
 import json
 import datetime
 
-def xvolume(x,printtable):
+def xvolume(x):
   '''
   xvolume: writes datetime and volume to .dat file every 'x' time-period (seconds) 
   '''
@@ -62,9 +62,6 @@ def xvolume(x,printtable):
         tv += vi                            # accumulate total volume
       if dt > cx*x:                             # if dt > cx multiples of x time periods
         cx = int(dt/x) + 1                      # a of x time periods passed
-        if printtable == 1:
-          print(str(di.strftime("%d/%m/%Y")) + "|" + str(round(float(xv)/1e9,2)))  # print information
-        #f.write(str(di) + ' ' + str(xv) + ' ' + str(ts) + ' ' + str(vkryptono) + str(vkyberf) + str(vkybert) + '\n')    # write date, volume to file
         f.write("%s %s %s %s %s %s %s %s %s" % (di,xv,ts,tx,vdigix,vkybert,vkyberf,vkryptono,'\n'))    # write date, volume to file
         di = d0 + datetime.timedelta(seconds=dt)                   # datetime of ith tx
         xv = 0                                                     # reset x volume 
@@ -72,12 +69,9 @@ def xvolume(x,printtable):
         vkybert = 0                                              # reset volume 
         vkyberf = 0                                              # reset volume 
         vkryptono = 0                                              # reset volume 
-    #f.write(str(di) + ' ' + str(xv) + ' ' + str(ts) + ' ' + str(vkryptono) + '\n')        # write date, volume to file
     f.write("%s %s %s %s %s %s %s %s %s" % (di,xv,ts,tx,vdigix,vkybert,vkyberf,vkryptono,'\n'))    # write date, volume to file
-  if printtable == 1:
-    print(str(di.strftime("%d/%m/%Y")) + "|" + str(round(float(xv)/1e9,2)))  # print information
 
-  return xv,tv,ts,tx
+  return di,xv,tv,ts,tx
 
 
 now = datetime.datetime.now()
@@ -105,30 +99,5 @@ dt = int(tlast) - int(t0)                       # time between 1st and last txs
 d0 = now - datetime.timedelta(seconds=dt)       # current time minus dt
 di = d0
 
-# Begin weekly table
-print("### Weekly volume table\n")
-print("Week Starting | Volume (DGX)")
-print("--- | ---")
-
-wv,tv,ts,tx = xvolume(week,1)
-
-# All-time volume table
-#print("Current Quarter |" + str(dateq.strftime("%d/%m/%Y")) + "|" + str(qv) )
-print("\n")
-print("### All-time volume\n")
-print("| All-time volume (DGX) |")
-print("| --- |")
-print("|" + str(round(float(tv)/1e9,2)) + "|\n")
-
-print("### Total transaction fees collected\n")
-print("| Transaction fees (DGX) |")
-print("| --- |")
-print("|" + str(round(float(tx)/1e9,2)) + "|\n")
-
-print("### Total Supply\n")
-print("| DGX Total Supply |")
-print("| --- |")
-print("|" + str(round(float(ts)/1e9,2)) + "|\n")
-
-wv,tv,ts,tx = xvolume(day,0)
+di,dv,tv,ts,tx = xvolume(day)
 

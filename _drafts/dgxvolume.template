@@ -8,7 +8,7 @@ htmlwidgets: true
 description: 
 ---
 
-<p>On-chain DGX volume graphs. Data taken from etherscan.</p>
+<p>DGX on-chain volume graphs. Data taken from etherscan.</p>
 
 <h3>DGX Total Supply</h3>
 

@@ -2,7 +2,7 @@
 title: "DGX Volume"
 output: html_document
 layout: post
-date: 'CURRENTDATE'
+date: 'Last updated: CURRENTDATE'
 comments: true
 htmlwidgets: true
 description: 
@@ -31,4 +31,4 @@ description:
 <h3>Weekly Volume</h3>
 
 <!--html_preserve--><div id="htmlwidget-182" style="width:432px;height:288px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-182">{"x":{"data":[{"type":"bar","inherit":false,"x":[WEEKLYDATE],"y":[WVRANGE],"mode":"lines"}],"layout":{"xaxis":{"title":"Date"},"yaxis":{"title":"Daily Volume (DGX)"},"hovermode":"closest","margin":{"b":40,"l":60,"t":25,"r":10}},"url":null,"width":null,"height":null,"source":"A","config":{"modeBarButtonsToRemove":["sendDataToCloud"]},"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<script type="application/json" data-for="htmlwidget-182">{"x":{"data":[{"type":"bar","inherit":false,"x":[WEEKLYDATE],"y":[WVRANGE],"mode":"lines"}],"layout":{"xaxis":{"title":"Date"},"yaxis":{"title":"Weekly Volume (DGX)"},"hovermode":"closest","margin":{"b":40,"l":60,"t":25,"r":10}},"url":null,"width":null,"height":null,"source":"A","config":{"modeBarButtonsToRemove":["sendDataToCloud"]},"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->

@@ -1,19 +1,14 @@
 ---
+title: "DGX volume"
+output: html_document
 layout: post
-title:  "DGX on-chain volume"
-date:   VALUE
-categories: DGX
+date: 'DATE'
+htmlwidgets: true
+description: 
 ---
 
-### Daily volume graph
+<h3>DGX Total Supply</h3>
 
-![DGX daily volume graph](dgxvolume_scripts/daily.png)
-
-### Weekly volume graph
-
-![DGX weekly volume graph](dgxvolume_scripts/out.png)
-
-### Total fees collected
-
-![Total fees collected](dgxvolume_scripts/fees.png)
-
+<!--html_preserve--><div id="htmlwidget-179" style="width:432px;height:288px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-179">{"x":{"data":[{"type":"scatter","mode":"lines","inherit":false,"x":[XRANGE],"y":[YRANGE],"mode":"markers"}],"layout":{"xaxis":{"title":"Date"},"yaxis":{"title":"Total Supply (DGX)"},"hovermode":"closest","margin":{"b":40,"l":60,"t":25,"r":10}},"url":null,"width":null,"height":null,"source":"A","config":{"modeBarButtonsToRemove":["sendDataToCloud"]},"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<br>

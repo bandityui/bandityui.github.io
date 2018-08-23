@@ -8,6 +8,8 @@ htmlwidgets: true
 description: 
 ---
 
+<p>On-chain DGX volume graphs. Data taken from etherscan.</p>
+
 <h3>DGX Total Supply</h3>
 
 <!--html_preserve--><div id="htmlwidget-178" style="width:400px;height:288px;" class="plotly html-widget"></div>

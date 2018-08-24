@@ -28,12 +28,12 @@ def xvolume(x):
       if i > 0:
         afrom1 = a[i-1]['from']                 # from of (i-1)th tx
       if afrom == '0x0000000000000000000000000000000000000000':  # if from 0x0 (minting)
-        ts += vi                                                 # Minting increases total supply
+        ts += vi                                                 # Minting increases total supply, doesn't count as volume
       elif ato == '0x0000000000000000000000000000000000000000':  # if to 0x0 (recasting)
-        ts -= vi                                                 # Recasting decreases total supply
-      elif ato == '0x26cab6888d95cf4a1b32bd37d4091aa0e29e7f68':  # recast fee collector
+        ts -= vi                                                 # Recasting decreases total supply, doesn't count as volume
+      elif ato == '0x26cab6888d95cf4a1b32bd37d4091aa0e29e7f68':  # recast fee collector, doesn't count as volume
         pass
-      elif ato == '0x00a55973720245819ec59c716b7537dac5ed4617':  # tx fee collector
+      elif ato == '0x00a55973720245819ec59c716b7537dac5ed4617':  # tx fee collector, doesn't count as volume
         tx += vi
       elif ato == '0xe8a0e282e6a3e8023465accd47fae39dd5db010b':  # kryptono
         vkryptono += vi
@@ -54,9 +54,9 @@ def xvolume(x):
         '''
         When e.g. 10 DGX is sent 3 tx occur: first 0.013 (the tx fee), then 9.987, lastly 10. 
         This conditional avoids counting the 9.987 because the 0.013 and the 9.987 have the same 'from' address.
-        '''
-      elif afrom == afrom1:
+        elif afrom == afrom1:
         continue
+        '''
       else:                                     # else is a normal tx
         xv += vi                            # accumulate 'x'ly volume
         tv += vi                            # accumulate total volume

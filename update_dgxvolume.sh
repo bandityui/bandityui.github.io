@@ -5,11 +5,11 @@ cd /home/thomas/bandityui.github.io/dgxvolume_scripts
 python3 wv.py > intro.txt
 awk -vORS=, '{ print "\""$1"\"" }' 86400.dat | sed 's/,$/\n/' > dailydate.list
 awk -vORS=, '{ print "\""$1"\"" }' 604800.dat | sed 's/,$/\n/' > weeklydate.list
-awk -vORS=, '{ print $4/1e9 }' 86400.dat | sed 's/,$/\n/' > ts.dat
-awk -vORS=, '{ print $5/1e9 }' 86400.dat | sed 's/,$/\n/' > fees.dat
-awk -vORS=, '{ print $6/1e9 }' 86400.dat | sed 's/,$/\n/' > tv.dat
-awk -vORS=, '{ print $3/1e9 }' 86400.dat | sed 's/,$/\n/' > dv.dat
-awk -vORS=, '{ print $3/1e9 }' 604800.dat | sed 's/,$/\n/' > wv.dat
+awk -vORS=, '{ print $4 }' 86400.dat | sed 's/,$/\n/' > ts.dat
+awk -vORS=, '{ print $5 }' 86400.dat | sed 's/,$/\n/' > fees.dat
+awk -vORS=, '{ print $6 }' 86400.dat | sed 's/,$/\n/' > tv.dat
+awk -vORS=, '{ print $3 }' 86400.dat | sed 's/,$/\n/' > dv.dat
+awk -vORS=, '{ print $3 }' 604800.dat | sed 's/,$/\n/' > wv.dat
 CURRENTDATE=$(cat date.txt)
 DAILYDATE=$(cat dailydate.list)
 WEEKLYDATE=$(cat weeklydate.list)

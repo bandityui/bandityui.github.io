@@ -19,18 +19,19 @@ def xvolume(x):
   ts = 0                                        # total supply
   di = d0                                       # start on d0
 
-  with open(str(x) + '.dat','w+') as f:         # open file for writing
+  with open(str(x) + '.dat','w') as f:         # open file for writing
     for i in range(0,len(a)):
       # write to file every 'x' time-step
       ti = int(a[i]['timeStamp'])               # time of ith tx
       dt = ti - t0                              # seconds since t0
       if dt > cx*x:                             # if dt > cx multiples of x time periods
         cx = int(dt/x) + 1                      # a of x time periods passed
-        f.write("%s %s %s %s %s %s %s %s %s %s" % (di,xv,ts,tx,tv,vdigix,vkybert,vkyberf,vkryptono,'\n'))    # write date, volume to file
+        di = di.strftime("%y-%m-%d %H:%M")
+        f.write("%s %12.2f %12.2f %12.2f %12.2f %12.2f %12.2f %12.2f %12.2f %s" % (di,xv,ts,tx,tv,vdigix,vkybert,vkyberf,vkryptono,'\n'))
         di = d0 + datetime.timedelta(seconds=dt)                   # datetime of ith tx
         xv = 0                                                     # reset x volume 
       
-      vi = int(a[i]['value'])                   # volume of ith tx
+      vi = float(a[i]['value'])*1e-9  # volume of ith tx
       ato = a[i]['to']                          # to of ith tx
       afrom = a[i]['from']                      # from of ith tx
       
@@ -57,9 +58,9 @@ def xvolume(x):
       # default actions:
       xv += vi                            # accumulate 'x'ly volume
       tv += vi                            # accumulate total volume
-      
-    f.write("%s %s %s %s %s %s %s %s %s %s" % (di,xv,ts,tx,tv,vdigix,vkybert,vkyberf,vkryptono,'\n'))    # write date, volume to file
     
+    di = di.strftime("%y-%m-%d %H:%M")
+    f.write("%s %12.2f %12.2f %12.2f %12.2f %12.2f %12.2f %12.2f %12.2f %s" % (di,xv,ts,tx,tv,vdigix,vkybert,vkyberf,vkryptono,'\n'))
   return di,xv,tv,ts,tx
 
 

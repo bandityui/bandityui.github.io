@@ -1,6 +1,7 @@
 import urllib.request
 import json
 import datetime
+from addressbook import *
 
 def xvolume(x):
   '''
@@ -20,57 +21,45 @@ def xvolume(x):
 
   with open(str(x) + '.dat','w+') as f:         # open file for writing
     for i in range(0,len(a)):
-      vi = int(a[i]['value'])                   # volume of ith tx
+      # write to file every 'x' time-step
       ti = int(a[i]['timeStamp'])               # time of ith tx
       dt = ti - t0                              # seconds since t0
-      ato = a[i]['to']                          # to of ith tx
-      afrom = a[i]['from']                      # from of ith tx
-      if i > 0:
-        afrom1 = a[i-1]['from']                 # from of (i-1)th tx
-      if afrom == '0x0000000000000000000000000000000000000000':  # if from 0x0 (minting)
-        ts += vi                                                 # Minting increases total supply, doesn't count as volume
-      elif ato == '0x0000000000000000000000000000000000000000':  # if to 0x0 (recasting)
-        ts -= vi                                                 # Recasting decreases total supply, doesn't count as volume
-      elif ato == '0x26cab6888d95cf4a1b32bd37d4091aa0e29e7f68':  # recast fee collector, doesn't count as volume
-        pass
-      elif ato == '0x00a55973720245819ec59c716b7537dac5ed4617':  # tx fee collector, doesn't count as volume
-        tx += vi
-      elif ato == '0xe8a0e282e6a3e8023465accd47fae39dd5db010b':  # kryptono
-        vkryptono += vi
-        xv += vi                            # accumulate 'x'ly volume
-        tv += vi                            # accumulate total volume
-      elif ato == '0x964f35fae36d75b1e72770e244f6595b68508cf5':  # kyber
-        vkybert += vi
-        xv += vi                            # accumulate 'x'ly volume
-        tv += vi                            # accumulate total volume
-      elif afrom == '0x964f35fae36d75b1e72770e244f6595b68508cf5': # kyber
-        vkyberf += vi
-        xv += vi                            # accumulate 'x'ly volume
-        tv += vi                            # accumulate total volume
-      elif afrom == '0xd5be9efcc0fbea9b68fa8d1af641162bc92e83f2': # digix
-        vdigix += vi
-        xv += vi                            # accumulate 'x'ly volume
-        tv += vi                            # accumulate total volume
-        '''
-        When e.g. 10 DGX is sent 3 tx occur: first 0.013 (the tx fee), then 9.987, lastly 10. 
-        This conditional avoids counting the 9.987 because the 0.013 and the 9.987 have the same 'from' address.
-        elif afrom == afrom1:
-        continue
-        '''
-      else:                                     # else is a normal tx
-        xv += vi                            # accumulate 'x'ly volume
-        tv += vi                            # accumulate total volume
       if dt > cx*x:                             # if dt > cx multiples of x time periods
         cx = int(dt/x) + 1                      # a of x time periods passed
         f.write("%s %s %s %s %s %s %s %s %s %s" % (di,xv,ts,tx,tv,vdigix,vkybert,vkyberf,vkryptono,'\n'))    # write date, volume to file
         di = d0 + datetime.timedelta(seconds=dt)                   # datetime of ith tx
         xv = 0                                                     # reset x volume 
-        vdigix = 0                                              # reset volume 
-        vkybert = 0                                              # reset volume 
-        vkyberf = 0                                              # reset volume 
-        vkryptono = 0                                              # reset volume 
+      
+      vi = int(a[i]['value'])                   # volume of ith tx
+      ato = a[i]['to']                          # to of ith tx
+      afrom = a[i]['from']                      # from of ith tx
+      
+      if afrom == zeroaddr:  # if from 0x0 (minting)
+        ts += vi  # Minting increases total supply
+        continue  # continue: skip adding volume
+      elif ato == zeroaddr:  # if to 0x0 (recasting)
+        ts -= vi  # Recasting decreases total supply
+        continue
+      elif ato == recastfeeaddr:  # recast fee collector
+        continue
+      elif ato == txfeeaddr:  # tx fee collector
+        tx += vi
+        continue
+      elif afrom == digixaddr: # digix
+        vdigix += vi
+      elif ato == kyberaddr:  # kyber
+        vkybert += vi
+      elif afrom == kyberaddr: # kyber
+        vkyberf += vi
+      elif ato == kryptonoaddr:  # kryptono
+        vkryptono += vi
+      
+      # default actions:
+      xv += vi                            # accumulate 'x'ly volume
+      tv += vi                            # accumulate total volume
+      
     f.write("%s %s %s %s %s %s %s %s %s %s" % (di,xv,ts,tx,tv,vdigix,vkybert,vkyberf,vkryptono,'\n'))    # write date, volume to file
-
+    
   return di,xv,tv,ts,tx
 
 

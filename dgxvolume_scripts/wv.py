@@ -21,7 +21,7 @@ def xvolume(x):
 
   with open(str(x) + '.dat','w') as f:         # open file for writing
     for i in range(0,len(a)):
-      # write to file every 'x' time-step
+      # write to file every multiple of 'x' (seconds)
       ti = int(a[i]['timeStamp'])               # time of ith tx
       dt = ti - t0                              # seconds since t0
       if dt > cx*x:                             # if dt > cx multiples of x time periods
@@ -32,8 +32,8 @@ def xvolume(x):
         xv = 0                                                     # reset x volume 
       
       vi = float(a[i]['value'])*1e-9  # volume of ith tx
-      ato = a[i]['to']                          # to of ith tx
-      afrom = a[i]['from']                      # from of ith tx
+      ato = a[i]['to']                # to of ith tx
+      afrom = a[i]['from']            # from of ith tx
       
       if afrom == zeroaddr:  # if from 0x0 (minting)
         ts += vi  # Minting increases total supply
@@ -48,7 +48,7 @@ def xvolume(x):
         continue
       elif afrom == digixaddr: # digix
         vdigix += vi
-      elif ato == kyberaddr:  # kyber
+      elif ato == kyberaddr:   # kyber
         vkybert += vi
       elif afrom == kyberaddr: # kyber
         vkyberf += vi

@@ -18,7 +18,7 @@ FEES=$(cat fees.dat)
 TOTALVOLUME=$(cat tv.dat)
 DAILYVOLUME=$(cat dv.dat)
 WEEKLYVOLUME=$(cat wv.dat)
-cd -
+cd /home/thomas/bandityui.github.io/
 sed -i "s/CURRENTDATE/$CURRENTDATE/" index.html
 sed -i "s/XRANGE/$DAILYDATE/" index.html
 sed -i "s/YRANGE/$TOTALSUPPLY/" index.html

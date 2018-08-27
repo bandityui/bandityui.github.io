@@ -64,9 +64,10 @@ def xvolume(x):
   return di,xv,tv,ts,tx
 
 
-now = datetime.datetime.now().strftime("%y-%m-%d %H:%M")
+now = datetime.datetime.now()
+currentdate = now.strftime("%y-%m-%d %H:%M")
 with open('date.txt','w+') as f:
-  f.write(str(now))
+  f.write(str(currentdate))
 
 # DGX on-chain volume
 with urllib.request.urlopen("https://api.etherscan.io/api?module=account&action=tokentx&contractaddress=0x4f3afec4e5a3f2a6a1a411def7d7dfe50ee057bf&page=1&offset=999999&sort=asc&apikey=Z672TYZ9ZYSM7KSCKM133HSF8UG1BF8DR7") as url:
@@ -75,7 +76,7 @@ a = data.get("result","None")
 
 # print messages
 print("This page updates hourly using data from the [DGX contract address (etherscan)](https://etherscan.io/token/0x4f3afec4e5a3f2a6a1a411def7d7dfe50ee057bf). Last updated:")
-print(now + ' UTC\n')
+print(currentdate + ' UTC\n')
 
 # loop over whole list of txs
 hour = 3600

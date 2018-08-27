@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cp /home/thomas/bandityui.github.io/_drafts/dgxvolume.template /home/thomas/bandityui.github.io/index.html
+cp /home/thomas/bandityui.github.io/_drafts/dgxvolume.html /home/thomas/bandityui.github.io/index.html
 cd /home/thomas/bandityui.github.io/scripts 
 python3 wv.py > intro.txt
 awk -vORS=, '{ print "\""$1"\"" }' 86400.dat | sed 's/,$/\n/' > dailydate.list

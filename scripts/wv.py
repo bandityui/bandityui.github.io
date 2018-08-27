@@ -75,7 +75,7 @@ a = data.get("result","None")
 
 # print messages
 print("This page updates hourly using data from the [DGX contract address (etherscan)](https://etherscan.io/token/0x4f3afec4e5a3f2a6a1a411def7d7dfe50ee057bf). Last updated:")
-print(now.strftime("%Y-%m-%d %H:%M") + ' UTC\n')
+print(now + ' UTC\n')
 
 # loop over whole list of txs
 hour = 3600

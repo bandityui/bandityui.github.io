@@ -64,7 +64,7 @@ def xvolume(x):
   return di,xv,tv,ts,tx
 
 
-now = datetime.datetime.now()
+now = datetime.datetime.now().strftime("%y-%m-%d %H:%M")
 with open('date.txt','w+') as f:
   f.write(str(now))
 

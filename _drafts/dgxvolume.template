@@ -1,8 +1,8 @@
 ---
-title: "DGX Volume"
+title: "DGX"
 output: html_document
 layout: post
-date: 'Last updated: CURRENTDATE'
+date: 'CURRENTDATE'
 comments: true
 htmlwidgets: true
 description: 

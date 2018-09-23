@@ -82,6 +82,7 @@ print(currentdate + ' UTC\n')
 hour = 3600
 day  = 24*hour
 week = 7*day
+month = 30*day
 quarter = 90*day
 
 t0 = int(a[0]['timeStamp'])             # time (s) of first tx 
@@ -92,4 +93,5 @@ di = d0
 
 di,dv,tv,ts,tx = xvolume(day)
 di,wv,tv,ts,tx = xvolume(week)
+di,mv,tv,ts,tx = xvolume(month)
 

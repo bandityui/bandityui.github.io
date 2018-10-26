@@ -1,3 +1,3 @@
 This page updates hourly using data from the [DGX contract address (etherscan)](https://etherscan.io/token/0x4f3afec4e5a3f2a6a1a411def7d7dfe50ee057bf). Last updated:
-18-10-26 15:00 UTC
+18-10-26 16:00 UTC
 

@@ -1,5 +1,6 @@
 #!/bin/bash
 
+git config user.name "bandityui"
 cp /home/thomas/bandityui.github.io/_drafts/dgxvolume.html /home/thomas/bandityui.github.io/index.html
 cd /home/thomas/bandityui.github.io/scripts 
 python3 wv.py > intro.txt
